@@ -1,0 +1,7 @@
+.vscode/
+.pytest_cache/
+venv/
+Ideias.txt
+README.txt
+*.log
+*.tmp
