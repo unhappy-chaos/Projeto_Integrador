@@ -1,0 +1,12 @@
+Como apontar para o unixODBC utilizar os coisos do projeto:
+Primeiro entre na pasta pai de Config [ Servidor por agora ]
+Abra o terminal
+Execute para apontar qual driver do MySQL ou outros bancos vai ser utilizado:
+ODBCSYSINI="$PWD/Config" \
+ODBCINI="$PWD/Config/odbc.ini" \
+odbcinst -q -d
+
+Execute para apontar quais parâmetros de conexão serão utilizados:
+ODBCSYSINI="$PWD/Config" \
+ODBCINI="$PWD/Config/odbc.ini" \
+odbcinst -q -s
