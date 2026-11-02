@@ -3,5 +3,7 @@
 venv/
 Ideias.txt
 README.txt
+problemas.txt
+__pycache__
 *.log
 *.tmp
