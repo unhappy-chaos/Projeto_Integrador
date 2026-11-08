@@ -49,7 +49,7 @@ def conectar_banco():
 
 
 # Bloco de teste
-if __name__ == "__main__": # Esse código só vai rodar se você ativar ele aqui no arquivo
+if __file__ == "__conexao__": # Esse código só vai rodar se você ativar ele aqui no arquivo
     conn = conectar_banco() # Rodando a função e pegando o resultado dela, nessa de rodar a função ele se conecta ao banco
 
     if conn:
