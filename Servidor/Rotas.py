@@ -44,7 +44,7 @@ import signal
 @app.get("/kill")
 def fecha_server():
     os.kill(os.getppid(), signal.SIGKILL) # Fecha para o Linux
-    os.kill(os.getppid(), signal.SIGILL) # Fecha para o Windows
+#    os.kill(os.getppid(), signal.SIGILL) # Fecha para o Windows
     os._exit(0) # Mata o processo pai para não iniciar novamente o uvicorn ()
     
 @app.get("/verificar")

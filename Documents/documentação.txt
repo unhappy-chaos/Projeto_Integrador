@@ -1,0 +1,269 @@
+DOCUMENTO DE ESPECIFICAÇÃO DE REQUISITOS
+Sistema de Gerenciamento de Frotas
+
+Tipo de aplicação: Desktop
+ Banco de Dados: MySQL
+ Segmento: Empresa de Transporte
+ Versão: 1.0
+
+1. Introdução
+
+O Sistema de Gerenciamento de Frotas tem como objetivo auxiliar uma empresa de transporte no gerenciamento das informações relacionadas à sua operação.
+
+O sistema foi desenvolvido utilizando banco de dados MySQL e permite armazenar dados sobre funcionários, motoristas, veículos, cidades, rotas, viagens, manutenções e abastecimentos.
+
+Nesta versão do projeto, o foco principal está na modelagem e implementação do banco de dados, garantindo o correto relacionamento entre as entidades e a integridade das informações armazenadas.
+
+2. Objetivo Geral
+
+Desenvolver um sistema capaz de armazenar, organizar e relacionar informações de uma empresa de transporte, possibilitando o gerenciamento eficiente da frota e de suas operações.
+
+3. Objetivos Específicos
+Cadastrar funcionários da empresa.
+Cadastrar motoristas.
+Cadastrar veículos da frota.
+Gerenciar cidades e rotas.
+Registrar viagens realizadas.
+Registrar manutenções dos veículos.
+Registrar abastecimentos.
+Garantir a integridade dos dados através dos relacionamentos entre tabelas.
+Centralizar as informações da empresa em um único banco de dados.
+4. Escopo do Sistema
+
+O sistema contempla os seguintes módulos:
+
+Módulo	Funcionalidade
+Funcionários	Cadastro de funcionários
+Motoristas	Cadastro de motoristas
+Veículos	Cadastro e gerenciamento da frota
+Cidades	Cadastro de cidades
+Rotas	Cadastro de rotas entre cidades
+Viagens	Registro de viagens
+Manutenções	Controle de manutenções
+Abastecimentos	Controle de abastecimentos
+4.1 Funcionalidades Futuras
+
+As seguintes funcionalidades poderão ser implementadas futuramente:
+
+Interface gráfica utilizando CTkinter.
+Sistema de login.
+Controle de permissões de usuários.
+Emissão de relatórios.
+Controle de cargas transportadas.
+Rastreamento de veículos.
+Integração com sistemas externos.
+5. Requisitos Funcionais (RF)
+Código	Descrição
+RF001	Permitir cadastrar funcionários.
+RF002	Permitir consultar funcionários cadastrados.
+RF003	Permitir cadastrar motoristas.
+RF004	Permitir alterar dados dos motoristas.
+RF005	Permitir cadastrar veículos.
+RF006	Permitir consultar os veículos cadastrados.
+RF007	Permitir alterar dados dos veículos.
+RF008	Permitir cadastrar cidades.
+RF009	Permitir cadastrar rotas.
+RF010	Permitir consultar rotas cadastradas.
+RF011	Permitir registrar viagens.
+RF012	Permitir associar motorista, veículo e rota a uma viagem.
+RF013	Permitir consultar viagens registradas.
+RF014	Permitir registrar manutenções.
+RF015	Permitir consultar manutenções registradas.
+RF016	Permitir registrar abastecimentos.
+RF017	Permitir consultar abastecimentos registrados.
+RF018	Permitir consultar informações gerais da frota.
+6. Requisitos Não Funcionais (RNF)
+Código	Descrição
+RNF001	O sistema deverá utilizar MySQL para armazenamento dos dados.
+RNF002	Os dados deverão ser armazenados de forma organizada e consistente.
+RNF003	O banco deverá utilizar chaves primárias e estrangeiras para garantir os relacionamentos.
+RNF004	O sistema deverá validar os dados antes de efetuar as operações.
+RNF005	O sistema deverá preservar a integridade dos dados armazenados.
+RNF006	A estrutura deverá permitir futuras expansões e melhorias.
+7. Regras de Negócio (RN)
+Código	Descrição
+RN001	Cada veículo deverá possuir uma placa única.
+RN002	Cada motorista deverá possuir um CPF único.
+RN003	Toda rota deverá possuir uma cidade de origem e uma cidade de destino.
+RN004	A cidade de origem deverá ser diferente da cidade de destino.
+RN005	A distância da rota deverá ser maior que zero.
+RN006	Toda viagem deverá possuir um motorista associado.
+RN007	Toda viagem deverá possuir um veículo associado.
+RN008	Toda viagem deverá possuir uma rota associada.
+RN009	Toda manutenção deverá estar vinculada a um veículo existente.
+RN010	Todo abastecimento deverá estar vinculado a um veículo existente.
+RN011	Valores de abastecimento e manutenção não poderão ser negativos.
+8. Estrutura de Dados
+Funcionário
+
+Armazena informações dos funcionários da empresa.
+
+Campos principais:
+
+id_funcionario
+nome
+cargo
+email
+senha
+Motorista
+
+Armazena informações dos motoristas.
+
+Campos principais:
+
+id_motorista
+nome
+cpf
+cnh
+categoria
+telefone
+email
+Veículo
+
+Armazena informações dos veículos da frota.
+
+Campos principais:
+
+id_veiculo
+placa
+marca
+modelo
+ano
+tipo
+quilometragem
+Cidade
+
+Armazena as cidades cadastradas.
+
+Campos principais:
+
+id_cidade
+nome
+estado
+Rota
+
+Armazena os trajetos entre cidades.
+
+Campos principais:
+
+id_rota
+id_cidade_origem
+id_cidade_destino
+distancia_km
+tempo_medio
+Viagem
+
+Armazena as viagens realizadas.
+
+Campos principais:
+
+id_viagem
+id_motorista
+id_veiculo
+id_rota
+data_viagem
+Manutenção
+
+Armazena os registros de manutenção dos veículos.
+
+Campos principais:
+
+id_manutencao
+id_veiculo
+data_manutencao
+descricao
+valor
+Abastecimento
+
+Armazena os registros de abastecimento.
+
+Campos principais:
+
+id_abastecimento
+id_veiculo
+data_abastecimento
+litros
+valor_total
+posto
+9. Relacionamentos do Banco de Dados
+
+O banco de dados possui os seguintes relacionamentos:
+
+Uma rota possui uma cidade de origem e uma cidade de destino.
+Uma viagem está associada a um motorista.
+Uma viagem está associada a um veículo.
+Uma viagem está associada a uma rota.
+Uma manutenção está associada a um veículo.
+Um abastecimento está associado a um veículo.
+10. Controle de Viagens
+
+O registro de viagens deverá armazenar:
+
+Motorista responsável.
+Veículo utilizado.
+Rota utilizada.
+Data da viagem.
+11. Atores do Sistema
+Ator	Responsabilidade
+Funcionário	Utilizar o sistema para consultar e gerenciar as informações da frota.
+12. Casos de Uso
+UC001 – Cadastrar Veículo
+
+Ator: Funcionário
+
+Objetivo: Registrar um novo veículo na frota.
+
+Fluxo Principal:
+
+O usuário acessa o cadastro de veículos.
+Informa os dados do veículo.
+O sistema valida os dados.
+O sistema verifica se a placa já existe.
+O sistema salva as informações.
+O sistema confirma o cadastro.
+
+Fluxo Alternativo:
+
+Caso a placa já esteja cadastrada, o sistema deverá exibir uma mensagem de erro.
+UC002 – Registrar Viagem
+
+Ator: Funcionário
+
+Objetivo: Registrar uma nova viagem.
+
+Fluxo Principal:
+
+O usuário acessa o módulo de viagens.
+Seleciona um motorista.
+Seleciona um veículo.
+Seleciona uma rota.
+Informa a data da viagem.
+O sistema registra a viagem.
+13. Critérios de Aceitação
+Cadastro de Veículos
+Todos os dados obrigatórios devem ser informados.
+A placa não poderá estar cadastrada anteriormente.
+O registro deverá ser salvo corretamente no banco.
+Cadastro de Viagens
+Deve ser possível selecionar motorista.
+Deve ser possível selecionar veículo.
+Deve ser possível selecionar rota.
+A viagem deverá ser armazenada corretamente.
+Cadastro de Abastecimentos
+Deve permitir informar veículo.
+Deve permitir informar litros abastecidos.
+Deve permitir informar valor total.
+Deve permitir informar o posto de abastecimento.
+14. Limitações e Restrições
+O banco de dados utilizado é MySQL.
+O projeto está focado na estrutura do banco de dados.
+Ainda não possui interface gráfica integrada ao banco de dados.
+Não possui níveis de acesso implementados.
+Não possui controle de permissões.
+Não possui rastreamento GPS.
+Não possui controle de cargas.
+15. Considerações Finais
+
+O Sistema de Gerenciamento de Frotas foi desenvolvido com o objetivo de centralizar e organizar as informações relacionadas à operação de transporte de uma empresa.
+
+A estrutura atual do banco de dados permite o gerenciamento de funcionários, motoristas, veículos, cidades, rotas, viagens, manutenções e abastecimentos, servindo como base para futuras implementações, como interface gráfica em CTkinter, autenticação de usuários e funcionalidades adicionais para aperfeiçoar o gerenciamento da frota.
